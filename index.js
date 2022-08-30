@@ -152,43 +152,36 @@ const precioJackson = 15300;
 const precioGretsch = 19260;
 
 function guitarraPrecio(precio=Number){
-    
+
     alert(`Su guitarra tiene un valor de ${precio}`);
 
     // PAGO DIFERIDO A MESES
-    let total = parseInt(prompt(`El monto total de su compra es ${precio} \n ¿Desea pagar a meses? \n 3 meses \n 6 meses \n 12 meses \n No gracias`));
+    let total = parseInt(prompt(`El monto total de su compra es de $${precio} m.x.n \n ¿Desea pagar a meses? \n 3 \n 6 \n 12 \n 1`))
 
-    if (total === "3 meses") {
+    if (total === 3) {
+        let precioFinal=((precio/3)* 0.16);
+        alert (`Su total a pagar a ${total} mensualidades es de $${(precioFinal).toFixed(2)} m.x.n con iva incluido`);
 
-        let precioFinal= precio / 3;
-        alert (`Su total a pagar a ${total} es de ${precioFinal * 0.16} con iva incluido`);
-        alert(`Gracias por su compra`)
     }
 
-        else if (total === "6 meses") {
-
-            let precioFinal= precio / 6;
-            alert (`Su total a pagar a ${total} es de ${precioFinal * 0.16} con iva incluido`);
-            alert(`Gracias por su compra`)
+        else if (total === 6) {
+            precioFinal=((precio/6)* 0.16);
+            alert (`Su total a pagar a ${total} mensualidades es de $${(precioFinal).toFixed(2)} m.x.n con iva incluido`);
+        
         }
 
-        else if (total === "12 meses") {
-
-            let precioFinal= precio / 12;
-            alert (`Su total a pagar a ${total} es de ${precioFinal * 0.16} con iva incluido`);
-            alert(`Gracias por su compra`)
+        else if (total === 12) {
+            precioFinal=((precio/12)* 0.16);
+            alert (`Su total a pagar a ${total} mensualidades es de $${(precioFinal).toFixed(2)} m.x.n con iva incluido`);
+    
         }
 
-        else if (total === "No gracias") {
-
-            let precioFinal= precio / 1;
-            alert (`Su total a pagar es de ${precioFinal * 0.16} con iva incluido`);
-            alert(`Gracias por su compra`)
+        else if (total === 1) {
+            precioFinal=(precio * 0.16)
+            alert (`Su total a pagar es de $${precioFinal} m.x.n con iva incluido`);
         }
 
-        return guitarraPrecio;
-
-
+    return false;
 }
 
 let modeloGuitarra = prompt("Selecciona el modelo de guitarra que te gustaría comprar \n Gibson Sg \n Fender Telecaster \n Ibanez Rg \n Jackson Js \n Gretsch Hollow \n Escribe salir para terminar").toLocaleLowerCase();
@@ -196,28 +189,33 @@ let modeloGuitarra = prompt("Selecciona el modelo de guitarra que te gustaría c
     while (modeloGuitarra != "salir") {
         switch (modeloGuitarra) {
             case "gibson sg":
-            guitarraPrecio (44500);
+            guitarraPrecio (precioGibson);
             break;
 
             case "fender telecaster":
-            guitarraPrecio (20480);
+            guitarraPrecio (precioFender);
             break;
 
             case "ibanez rg":
-            guitarraPrecio (17600);
+            guitarraPrecio (precioIbanez);
             break;
 
             case "jackson js":
-            guitarraPrecio (15300);
+            guitarraPrecio (precioJackson);
             break;
 
             case "gretsch hollow":
-            guitarraPrecio (19260);
+            guitarraPrecio (precioGretsch);
             break;
 
             default: 
-            alert ("¡¡Datos no válidos!!")
-            break;
-            
+            alert ("¡¡Datos no válidos!!");
+            modeloGuitarra = prompt("Selecciona el modelo de guitarra que te gustaría comprar \n Gibson Sg \n Fender Telecaster \n Ibanez Rg \n Jackson Js \n Gretsch Hollow \n Escribe salir para terminar").toLocaleLowerCase();
         }
+
+        alert(`¡¡Gracias por su compra!!`)
+
+    
     }
+
+    alert ("¡¡Gracias por tu visita, te esperamos pronto!!");
